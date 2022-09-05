@@ -22,15 +22,15 @@ const port = process.env.port || 3000;
 //======================
 
 //connect to db either through heroku or local
-const MONGODB_URL = process.env.MONGODB_URL;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 //Connect to mongo
 //fix depreciation warnings
-mongoose.connect(MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //error / success 
 db.on("error", (err) => console.log(err.message + "is mongod not running?"));
-db.on("connected", () => console.log("mongod connected: ", MONGODB_URL));
+db.on("connected", () => console.log("mongod connected: ", MONGODB_URI));
 db.on("disconnected", () => console.log("mongod disconnected"));
 
 //======================
